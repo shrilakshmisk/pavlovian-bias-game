@@ -1,0 +1,17 @@
+/* Fullscreen Fixation Screen */
+.fixation-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Plus Symbol (Centered) */
+  .plus-sign {
+    font-size: 4rem; /* Medium-sized */
+    font-weight: bold;
+    color: black;
+  }
+  

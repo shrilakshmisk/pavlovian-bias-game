@@ -1,0 +1,30 @@
+[
+  {
+    "userId": "user123",
+    "pressed": true,
+    "pressTime": 1782,
+    "correct": true,
+    "timestamp": 1741989333257
+  },
+  {
+    "userId": "user123",
+    "pressed": true,
+    "pressTime": 831,
+    "correct": true,
+    "timestamp": 1741989336585
+  },
+  {
+    "userId": "user123",
+    "pressed": true,
+    "pressTime": 371,
+    "correct": false,
+    "timestamp": 1741989338733
+  },
+  {
+    "userId": "user123",
+    "pressed": true,
+    "pressTime": 472,
+    "correct": false,
+    "timestamp": 1741989340005
+  }
+]

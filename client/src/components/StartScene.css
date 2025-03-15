@@ -1,0 +1,76 @@
+/* Fullscreen Game Scene */
+.start-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Background Image */
+.start-scene {
+  background: url('../assets/background.jpg') center/cover no-repeat;
+}
+
+/* Background Overlay (Ensures only background is semi-transparent) */
+.background-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../assets/background.jpg') center/cover no-repeat;
+  opacity: 0.5;  /* Now only the background is transparent */
+  z-index: -1;   /* Keeps it behind all other elements */
+}
+
+/* Score Box - Top Right */
+.score-box {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 2rem; /* Bigger Font */
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  min-width: 150px;  /* Ensures enough space for 4-digit numbers */
+  justify-content: space-between; /* Keeps coin on left, number on right */
+}
+
+/* Coin Icon (Always Stays on Left) */
+.coin-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  flex-shrink: 0; /* Prevents it from shrinking */
+}
+
+/* Centered Start Button (Only Responds to Spacebar) */
+.start-button {
+  font-size: 3rem;    /* Large Font */
+  font-weight: 800;   /* Bold */
+  padding: 1.2rem 4rem; /* Big Padding */
+  border: none;
+  border-radius: 15px;
+  text-transform: uppercase;
+  background-color: #ffcc00;
+  color: #333;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  pointer-events: none; /* Prevents Click */
+}
+
+/* Instruction Text */
+.instruction-text {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+  text-transform: uppercase;
+}
