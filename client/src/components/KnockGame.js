@@ -85,6 +85,7 @@ function KnockGame({ userId }) {
 
     // Build trial data
     const trialData = {
+      userId: userId,
       trialNumber: currentTrialIndex + 1,
       stimulus: currentTrial.type,
       reactionTime: reactionTime, // 0 if no press
