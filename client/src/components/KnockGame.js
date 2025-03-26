@@ -114,6 +114,7 @@ function KnockGame({ userId }) {
     setScoreTransition(`${oldScore} → ${newScore}`);
 
     const trialData = {
+      userId: userId,
       trialNumber: currentTrialIndex + 1,
       stimulus: trialType,
       reactionTime: reactionTime || 0,
