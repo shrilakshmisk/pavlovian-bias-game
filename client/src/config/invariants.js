@@ -24,7 +24,7 @@ export const BLOCK_PROPORTIONS = {
   MC: { go1: 5, go2: 5, nogo1: 5, nogo2: 5 },   // 25% each
   LC: { go1: 7, go2: 3, nogo1: 7, nogo2: 3 },   // 35%, 15%, 35%, 15%
   HC1: { go1: 3, go2: 7, nogo1: 3, nogo2: 7 },    // 15%, 35%, 15%, 35%
-  HC2: {go1: 3, go2:4 , nogo1: 3 , nogo2: 10}
+  HC2: {go1: 3, go2: 10, nogo1: 3 , nogo2: 4}
 };
 
 // Define the asset paths for your stimulus images (PNG files)
