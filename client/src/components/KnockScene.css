@@ -1,69 +1,101 @@
 .knock-scene {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    /* If you want a background color fallback: */
-    background-color: #ccc;
-  }
-  
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: auto 100vh;
+  background-position: center;
+  background-color: #ccc;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
 /* Score Box - Top Right */
 .score-box {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    font-size: 2rem; /* Bigger Font */
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
-    color: #333;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    min-width: 150px;  /* Ensures enough space for 4-digit numbers */
-    justify-content: space-between; /* Keeps coin on left, number on right */
-  }
-  
-  /* Coin Icon (Always Stays on Left) */
-  .coin-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    flex-shrink: 0; /* Prevents it from shrinking */
-  }
-  
-  /* Timer box at top left */
-  .timer-box {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.8rem 1.2rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    text-transform: uppercase;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-  
-  /* “Knock” button at bottom center (only responds to spacebar) */
-  .knock-button {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    font-weight: 800;
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 10px;
-    text-transform: uppercase;
-    background-color: #ffcc00;
-    color: #333;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-    pointer-events: none; /* disables mouse clicks */
-  }
-  
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  min-width: 150px;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Score Glow Animation on Update */
+@keyframes scoreUpdate {
+  0% { transform: scale(1); box-shadow: 0 0 10px gold; }
+  50% { transform: scale(1.1); box-shadow: 0 0 20px gold; }
+  100% { transform: scale(1); box-shadow: 0 0 10px gold; }
+}
+
+.score-box.updated {
+  animation: scoreUpdate 0.5s ease-in-out;
+}
+
+/* Coin Icon */
+.coin-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* Timer Box */
+.timer-box {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  animation: pulseTimer 1s infinite alternate;
+}
+
+/* Timer Pulsing Animation */
+@keyframes pulseTimer {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* Knock Button */
+.knock-button {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  background-color: #ffcc00;
+  color: #333;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  animation: pulseKnock 1.5s infinite;
+}
+
+/* Knock Button Pulsing Animation */
+@keyframes pulseKnock {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* Fade-in effect for the whole scene */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

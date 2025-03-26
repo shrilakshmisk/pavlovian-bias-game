@@ -1,39 +1,81 @@
 .feedback-overlay {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999; /* on top of everything */
-  }
-  
-  .feedback-content {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    animation: scaleUp 0.3s ease-out;
-  }
-  
-  .feedback-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
-  
-  .feedback-content h2 {
-    font-size: 2rem;
-    color: #666;
-  }
-  
-  /* Simple scale animation */
-  @keyframes scaleUp {
-    0% { transform: scale(0.7); }
-    100% { transform: scale(1); }
-  }
-  
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../assets/background.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Other styles remain unchanged */
+
+.feedback-content {
+  background-color: #e3e9ea;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  animation: scaleUp 0.3s ease-out;
+  position: relative;
+}
+
+.feedback-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: #333;
+  animation: pulse 0.8s infinite alternate;
+}
+
+.feedback-content h2 {
+  font-size: 2rem;
+  color: #666;
+  font-weight: bold;
+  transition: color 0.5s ease-in-out;
+}
+
+/* Score change animations */
+.score-positive {
+  color: green;
+  animation: scorePop 0.5s ease-in-out;
+}
+
+.score-negative {
+  color: red;
+  animation: scoreShake 0.5s ease-in-out;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  0% { transform: scale(0.7); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes scorePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+@keyframes scoreShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}

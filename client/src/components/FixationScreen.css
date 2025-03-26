@@ -1,17 +1,29 @@
 /* Fullscreen Fixation Screen */
 .fixation-screen {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f9fa; /* Softer white for reduced eye strain */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Plus Symbol (Centered) */
+.plus-sign {
+  font-size: clamp(3rem, 8vw, 6rem); /* Adjust size based on screen width */
+  font-weight: bold;
+  color: #111; /* Slightly off-black for better readability */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  user-select: none; /* Prevent text selection */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
   }
-  
-  /* Plus Symbol (Centered) */
-  .plus-sign {
-    font-size: 4rem; /* Medium-sized */
-    font-weight: bold;
-    color: black;
+  to {
+      opacity: 1;
   }
-  
+}

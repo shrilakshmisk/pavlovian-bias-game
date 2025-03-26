@@ -1,4 +1,3 @@
-// KnockGame.js
 import React, { useState } from 'react';
 import KnockScene from './KnockScene';
 import FeedbackPopup from './FeedbackPopup';
@@ -30,13 +29,11 @@ function generateBlock(conflictType) {
     } else if (trialType === 'nogo2') {
       trial = { type: trialType, img: ASSET_PATHS.nogoImage2, isKnockCorrect: false };
     }
-    // Push the trial object count times
     for (let i = 0; i < count; i++) {
       block.push(trial);
     }
   });
 
-  // Shuffle the block using Fisher–Yates algorithm
   for (let i = block.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [block[i], block[j]] = [block[j], block[i]];
@@ -44,7 +41,6 @@ function generateBlock(conflictType) {
   return block;
 }
 
-// Generate the complete trial list by concatenating blocks in the specified order
 function generateTrialList() {
   let trialList = [];
   BLOCK_ORDER.forEach((conflictType) => {
@@ -54,12 +50,11 @@ function generateTrialList() {
 }
 
 function KnockGame({ userId }) {
-  // Generate trial list only once
   const [trialList] = useState(() => generateTrialList());
-  const totalTrials = trialList.length; // should be 80
+  const totalTrials = trialList.length;
   const [currentTrialIndex, setCurrentTrialIndex] = useState(0);
-  const [phase, setPhase] = useState('fixation'); // 'fixation', 'stimulus', 'feedback'
-  const [trialKey, setTrialKey] = useState(1); // to force remount of KnockScene each trial
+  const [phase, setPhase] = useState('fixation');
+  const [trialKey, setTrialKey] = useState(1);
   const [score, setScore] = useState(0);
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [scoreTransition, setScoreTransition] = useState('');
@@ -67,37 +62,69 @@ function KnockGame({ userId }) {
 
   const currentTrial = trialList[currentTrialIndex];
 
-  // When the fixation phase times out (after FIXATION_DURATION), move to the stimulus phase
   const handleFixationTimeout = () => {
     setPhase('stimulus');
-    setTrialKey(prev => prev + 1); // force fresh KnockScene
+    setTrialKey(prev => prev + 1);
   };
 
-  // When the stimulus phase ends (via spacebar press or timeout), handle feedback
-  const handleKnockComplete = ({ wasCorrect, reactionTime }) => {
+  const handleKnockComplete = ({ userKnocked, reactionTime }) => {
+    const trialType = currentTrial.type;
+    let wasCorrect = false;
+    let scoreChange = 0;
+
+    if (trialType === 'go1') {
+      if (userKnocked) {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? +50 : 0;
+      } else {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? 0 : +50;
+      }
+    } else if (trialType === 'go2') {
+      if (userKnocked) {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? 0 : -50;
+      } else {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? -50 : 0;
+      }
+    } else if (trialType === 'nogo1') {
+      if (userKnocked) {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? -50 : 0;
+      } else {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? 0 : -50;
+      }
+    } else if (trialType === 'nogo2') {
+      if (userKnocked) {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? 0 : +50;
+      } else {
+        wasCorrect = Math.random() < 0.8;
+        scoreChange = wasCorrect ? +50 : 0;
+      }
+    }
+
     const oldScore = score;
-    const delta = wasCorrect ? 50 : -50;
-    const newScore = oldScore + delta;
+    const newScore = oldScore + scoreChange;
     setScore(newScore);
 
-    setFeedbackMessage(wasCorrect ? 'HURRAY!!! +50' : 'BAD LUCK!!! -50');
+    setFeedbackMessage(wasCorrect ? `Correct! ${scoreChange}` : `Incorrect! ${scoreChange}`);
     setScoreTransition(`${oldScore} → ${newScore}`);
 
-    // Build trial data
     const trialData = {
       trialNumber: currentTrialIndex + 1,
-      stimulus: currentTrial.type,
-      reactionTime: reactionTime, // 0 if no press
+      stimulus: trialType,
+      reactionTime: reactionTime || 0,
       correct: wasCorrect,
-      scoreChange: delta,
+      scoreChange: scoreChange,
       newScore: newScore
     };
     saveTrialData(trialData);
 
-    // Move to feedback phase
     setPhase('feedback');
 
-    // After FEEDBACK_DURATION, go to next trial or end experiment
     setTimeout(() => {
       if (currentTrialIndex < totalTrials - 1) {
         setCurrentTrialIndex(prev => prev + 1);
@@ -108,7 +135,6 @@ function KnockGame({ userId }) {
     }, FEEDBACK_DURATION);
   };
 
-  // Function to send trial data to the backend
   function saveTrialData(trialData) {
     fetch('/api/trialData', {
       method: 'POST',
@@ -126,7 +152,6 @@ function KnockGame({ userId }) {
 
   return (
     <div style={{ position: 'relative' }}>
-      {/* Phase control: */}
       {phase === 'fixation' && (
         <FixationScreen onTimeout={handleFixationTimeout} duration={FIXATION_DURATION} />
       )}
@@ -148,19 +173,6 @@ function KnockGame({ userId }) {
       )}
     </div>
   );
-}
-
-// Example server update function (optional)
-async function updateScoreOnServer(userId, newScore) {
-  try {
-    await fetch('/api/updateScore', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, score: newScore }),
-    });
-  } catch (error) {
-    console.error('Failed to update score on server:', error);
-  }
 }
 
 export default KnockGame;
