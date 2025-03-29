@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 app.use(express.json());
 // Open (or create) the SQLite database file
+const DBSOURCE = "db.sqlite";
 let db = new sqlite3.Database(DBSOURCE, (err) => {
   if (err) {
     console.error("Could not connect to database", err.message);
