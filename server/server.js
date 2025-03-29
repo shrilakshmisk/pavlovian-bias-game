@@ -3,9 +3,6 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
 app.use(express.json());
-
-const DBSOURCE = "db.sqlite";
-
 // Open (or create) the SQLite database file
 let db = new sqlite3.Database(DBSOURCE, (err) => {
   if (err) {
@@ -55,7 +52,14 @@ app.post('/api/trialData', (req, res) => {
     });
   });
   
+app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.listen(3001, () => {
-  console.log('Server running on port 3001');
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
+// ✅ Start server
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
