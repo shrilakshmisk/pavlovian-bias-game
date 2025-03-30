@@ -8,7 +8,7 @@ export const ADDITION_DURATION = 1500;        // Addition problem display durati
 
 
 // Trial block settings
-export const TOTAL_TRIALS_PER_BLOCK = 20;
+export const TOTAL_TRIALS_PER_BLOCK = 100;
 
 // Define the order of blocks (MC, LC, HC, LC)
 export const BLOCK_ORDER = ['MC', 'HC1', 'HC2', 'LC'];
