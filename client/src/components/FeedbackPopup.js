@@ -12,7 +12,6 @@ function FeedbackPopup({ message, scoreTransition }) {
     >
       <div className="feedback-content">
         <h1>{message}</h1>
-        <h2 className={scoreClass}>{scoreTransition}</h2>
       </div>
     </div>
   );
