@@ -43,7 +43,7 @@ app.post('/api/trialData', (req, res) => {
     const { userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore } = trialData;
   
     const sql = `INSERT INTO trial_data (userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore)
-                 VALUES (?,?,?,?,?,?,?)`;
+                 VALUES (?,?,?,?,?,?,?,?)`;
     const params = [userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore];
   
     db.run(sql, params, function(err) {
@@ -61,7 +61,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
-// ✅ Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
