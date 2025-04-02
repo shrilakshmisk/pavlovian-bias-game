@@ -67,7 +67,7 @@ function KnockGame({ userId }) {
     setTrialKey(prev => prev + 1);
   };
 
-  const handleKnockComplete = ({ userKnocked, reactionTime }) => {
+  const handleKnockComplete = ({ userKnocked, isCorrect, reactionTime }) => {
     const trialType = currentTrial.type;
     let wasCorrect = false;
     let scoreChange = 0;
@@ -110,7 +110,7 @@ function KnockGame({ userId }) {
     const newScore = oldScore + scoreChange;
     setScore(newScore);
 
-    setFeedbackMessage(wasCorrect ? `Correct! ${scoreChange}` : `Incorrect! ${scoreChange}`);
+    setFeedbackMessage(isCorrect ? `Correct! ${scoreChange}` : `Incorrect! ${scoreChange}`);
     setScoreTransition(`${oldScore} → ${newScore}`);
 
     const trialTypeMap = {
@@ -128,7 +128,7 @@ function KnockGame({ userId }) {
       stimulus: encodedTrialType,
       reactionTime: reactionTime || 0,
       knocked: userKnocked,
-      correct: wasCorrect,
+      correct: isCorrect,
       scoreChange: scoreChange,
       newScore: newScore
     };
