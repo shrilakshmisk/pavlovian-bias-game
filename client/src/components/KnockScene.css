@@ -51,13 +51,38 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  padding: 0.8rem 1.2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.9));
+  border: 2px solid rgba(200, 200, 200, 0.6);
+  border-radius: 12px;
   text-transform: uppercase;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #333;
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Clock Icon */
+.timer-box::before {
+  content: "⏳"; /* You can replace with 🕒 if preferred */
+  font-size: 1.5rem;
+}
+
+/* When time is running out, highlight the timer */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2); }
+  50% { transform: scale(1.05); box-shadow: 2px 4px 20px rgba(255, 0, 0, 0.5); }
+  100% { transform: scale(1); box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2); }
+}
+
+.timer-box.critical {
+  color: #d9534f;
+  border-color: #d9534f;
+  animation: pulse 0.7s infinite;
 }
 
 
@@ -74,7 +99,7 @@
   border: none;
   border-radius: 10px;
   text-transform: uppercase;
-  background-color: #ffcc00;
+  background-color: #f2f2f6;
   color: #333;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   pointer-events: none;

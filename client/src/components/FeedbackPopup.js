@@ -11,8 +11,7 @@ function FeedbackPopup({ message, scoreTransition }) {
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="feedback-content">
-        <h1>{message}</h1>
-        <h2 className={scoreClass}>{scoreTransition}</h2>
+        <h1>{message}</h1> 
       </div>
     </div>
   );
