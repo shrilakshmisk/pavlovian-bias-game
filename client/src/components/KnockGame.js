@@ -113,10 +113,19 @@ function KnockGame({ userId }) {
     setFeedbackMessage(wasCorrect ? `Correct! ${scoreChange}` : `Incorrect! ${scoreChange}`);
     setScoreTransition(`${oldScore} → ${newScore}`);
 
+    const trialTypeMap = {
+      go1: 1,
+      go2: 2,
+      nogo1: 3,
+      nogo2: 4
+    };
+    
+    const encodedTrialType = trialTypeMap[trialType] || 0; // fallback to 0 if undefined
+    
     const trialData = {
       userId: userId,
       trialNumber: currentTrialIndex + 1,
-      stimulus: trialType,
+      stimulus: encodedTrialType,
       reactionTime: reactionTime || 0,
       knocked: userKnocked,
       correct: wasCorrect,
