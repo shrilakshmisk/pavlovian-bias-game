@@ -5,7 +5,6 @@
   background-size: auto 100vh;
   background-position: center;
   background-color: #ccc;
-  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Score Box - Top Right */
@@ -84,7 +83,6 @@
   color: #333;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   pointer-events: none;
-  animation: pulseKnock 1.5s infinite;
 }
 
 /* Knock Button Pulsing Animation */
