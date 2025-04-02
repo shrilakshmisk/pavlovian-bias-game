@@ -61,10 +61,10 @@ function KnockScene({
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {/* Score box at top right */}
-      <div className="score-box">
-        <img src={coinIcon} alt="COIN" className="coin-icon" />
-        <span className="score-number">{score}</span>
-      </div>      {/* Timer box at top left */}
+      // <div className="score-box">
+      //   <img src={coinIcon} alt="COIN" className="coin-icon" />
+      //   <span className="score-number">{score}</span>
+      // </div>      {/* Timer box at top left */}
       <div className="timer-box">{secondsLeft}s</div>
       {/* Visual Knock button (only responds to spacebar) */}
       <button
