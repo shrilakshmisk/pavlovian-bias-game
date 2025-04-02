@@ -17,10 +17,11 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
     const createTableQuery = `
       CREATE TABLE IF NOT EXISTS trial_data (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        userId TEXT,
+        userId INTEGER,
         trialNumber INTEGER,
-        stimulus TEXT,
+        stimulus INTEGER,
         reactionTime INTEGER,
+        knocked BOOLEAN,
         correct BOOLEAN,
         scoreChange INTEGER,
         newScore INTEGER,
@@ -39,11 +40,11 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 
 app.post('/api/trialData', (req, res) => {
     const trialData = req.body; // Expected fields: userId, trialNumber, stimulus, reactionTime, correct, scoreChange, newScore
-    const { userId, trialNumber, stimulus, reactionTime, correct, scoreChange, newScore } = trialData;
+    const { userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore } = trialData;
   
-    const sql = `INSERT INTO trial_data (userId, trialNumber, stimulus, reactionTime, correct, scoreChange, newScore)
+    const sql = `INSERT INTO trial_data (userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore)
                  VALUES (?,?,?,?,?,?,?)`;
-    const params = [userId, trialNumber, stimulus, reactionTime, correct, scoreChange, newScore];
+    const params = [userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore];
   
     db.run(sql, params, function(err) {
       if (err) {
