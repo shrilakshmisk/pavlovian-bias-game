@@ -49,7 +49,7 @@ function KnockScene({
     const wasCorrect = (!isKnockCorrect && !didPress) || (isKnockCorrect && didPress);
     // Send both reaction time and correctness back to the parent.
     console.log('isKnockCorrect:', isKnockCorrect, 'didPress:', didPress, 'reactionTime:', reactionTime, 'wasCorrect:', wasCorrect);
-    onComplete({ wasCorrect, reactionTime });
+    onComplete({ userKnocked: didPress, wasCorrect, reactionTime });
   }
 
   // Format timeLeft in seconds with two decimals
