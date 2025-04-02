@@ -58,14 +58,9 @@
   border-radius: 8px;
   text-transform: uppercase;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  animation: pulseTimer 1s infinite alternate;
 }
 
-/* Timer Pulsing Animation */
-@keyframes pulseTimer {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.05); opacity: 0.8; }
-}
+
 
 /* Knock Button */
 .knock-button {
@@ -85,15 +80,3 @@
   pointer-events: none;
 }
 
-/* Knock Button Pulsing Animation */
-@keyframes pulseKnock {
-  0% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.1); }
-  100% { transform: translateX(-50%) scale(1); }
-}
-
-/* Fade-in effect for the whole scene */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
