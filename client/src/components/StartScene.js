@@ -21,10 +21,7 @@ function StartScene({ score = 0, onStart }) {
       <div className="background-overlay"></div>
 
       {/* Score Box at Top Right */}
-      <div className="score-box">
-        <img src={coinIcon} alt="COIN" className="coin-icon" />
-        <span className="score-number">{score}</span>
-      </div>
+      
 
       {/* Start Button (Only for display, does nothing on click) */}
       <button
