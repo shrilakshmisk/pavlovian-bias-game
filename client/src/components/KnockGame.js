@@ -118,6 +118,7 @@ function KnockGame({ userId }) {
       trialNumber: currentTrialIndex + 1,
       stimulus: trialType,
       reactionTime: reactionTime || 0,
+      knocked: userKnocked,
       correct: wasCorrect,
       scoreChange: scoreChange,
       newScore: newScore
