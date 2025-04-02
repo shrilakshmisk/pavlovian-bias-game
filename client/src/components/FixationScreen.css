@@ -17,12 +17,3 @@
   user-select: none; /* Prevent text selection */
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-  }
-  to {
-      opacity: 1;
-  }
-}
