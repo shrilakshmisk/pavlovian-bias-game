@@ -158,9 +158,24 @@ function KnockGame({ userId }) {
   }
 
   if (experimentEnded) {
-    return <EndScreen score={score} />;
+    useEffect(() => {
+      const surveyUrl = `https://forms.gle/your-survey-link?userId=${userId}`; // ← customize link
+      const timer = setTimeout(() => {
+        window.open(surveyUrl, "_blank"); // Open survey in a new tab
+      }, 5000); // 5 second delay
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+    return (
+      <div style={{ textAlign: 'center', paddingTop: '5rem' }}>
+        <h2>Thank you for participating!</h2>
+        <p>Your final score: <strong>{score}</strong></p>
+        <p>You will be redirected to a short survey in <strong>5 seconds</strong>...</p>
+        <p>If it doesn’t open, <a href="https://forms.gle/your-survey-link" target="_blank" rel="noreferrer">click here</a>.</p>
+      </div>
+    );
   }
-
   return (
     <div style={{ position: 'relative' }}>
       {phase === 'fixation' && (
