@@ -67,7 +67,7 @@ function KnockGame({ userId }) {
     setTrialKey(prev => prev + 1);
   };
 
-  const handleKnockComplete = ({ userKnocked, isCorrect, reactionTime }) => {
+    const handleKnockComplete = ({ userKnocked, isCorrect, reactionTime }) => {
     const trialType = currentTrial.type;
     let wasCorrect = false;
     let scoreChange = 0;
@@ -78,12 +78,12 @@ function KnockGame({ userId }) {
         scoreChange = wasCorrect ? +50 : 0;
       } else {
         wasCorrect = Math.random() < 0.8;
-        scoreChange = wasCorrect ? 0 : +50;
+        scoreChange = wasCorrect ? 0 : -50;
       }
     } else if (trialType === 'go2') {
       if (userKnocked) {
         wasCorrect = Math.random() < 0.8;
-        scoreChange = wasCorrect ? 0 : -50;
+        scoreChange = wasCorrect ? 0 : +50;
       } else {
         wasCorrect = Math.random() < 0.8;
         scoreChange = wasCorrect ? -50 : 0;
@@ -94,17 +94,19 @@ function KnockGame({ userId }) {
         scoreChange = wasCorrect ? -50 : 0;
       } else {
         wasCorrect = Math.random() < 0.8;
-        scoreChange = wasCorrect ? 0 : -50;
+        scoreChange = wasCorrect ? 0 : 50;
       }
     } else if (trialType === 'nogo2') {
       if (userKnocked) {
         wasCorrect = Math.random() < 0.8;
-        scoreChange = wasCorrect ? 0 : +50;
+        scoreChange = wasCorrect ? 0 : -50;
       } else {
         wasCorrect = Math.random() < 0.8;
         scoreChange = wasCorrect ? +50 : 0;
       }
     }
+
+    console.log(`Trial Type: ${trialType}, User Knocked: ${userKnocked}, wasCorrect: ${wasCorrect}, isCorrect: ${isCorrect}, Score Change: ${scoreChange}`);
 
     const oldScore = score;
     const newScore = oldScore + scoreChange;
