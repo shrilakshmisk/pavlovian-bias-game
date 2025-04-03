@@ -61,6 +61,18 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
+const dbPath = path.join(__dirname, './', 'db.sqlite'); // adjust path accordingly
+
+// Endpoint to download the SQLite DB
+app.get('/download-db', (req, res) => {
+  res.download(dbPath, 'experiment-data.sqlite', (err) => {
+    if (err) {
+      console.error('Error downloading the DB:', err);
+      res.status(500).send('Error downloading database');
+    }
+  });
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

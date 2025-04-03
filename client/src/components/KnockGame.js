@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import KnockScene from './KnockScene';
 import FeedbackPopup from './FeedbackPopup';
 import FixationScreen from './FixationScreen';
@@ -159,25 +160,38 @@ function KnockGame({ userId }) {
       .catch(err => console.error('Error saving trial data:', err));
   }
 
-  if (experimentEnded) {
-    useEffect(() => {
-      const surveyUrl = `https://forms.gle/your-survey-link?userId=${userId}`; // ← customize link
+  useEffect(() => {
+    if (experimentEnded) {
+      const surveyUrl = `https://qualtricsxmz5bxkymvf.au1.qualtrics.com/jfe/preview/previewId/12cb98cf-1505-4666-a335-9efd633e1b2b/SV_7R7AbLlr1DmRRt4?Q_CHL=preview&Q_SurveyVersionID=current`;
+
       const timer = setTimeout(() => {
-        window.open(surveyUrl, "_blank"); // Open survey in a new tab
-      }, 5000); // 5 second delay
-  
+        window.open(surveyUrl, "_blank");
+      }, 5000);
+
       return () => clearTimeout(timer);
-    }, []);
-  
+    }
+  }, [experimentEnded]);
+
+  if (experimentEnded) {
     return (
       <div style={{ textAlign: 'center', paddingTop: '5rem' }}>
         <h2>Thank you for participating!</h2>
         <p>Your final score: <strong>{score}</strong></p>
         <p>You will be redirected to a short survey in <strong>5 seconds</strong>...</p>
-        <p>If it doesn’t open, <a href="https://forms.gle/your-survey-link" target="_blank" rel="noreferrer">click here</a>.</p>
+        <p>
+          If it doesn’t open,{' '}
+          <a
+            href="https://qualtricsxmz5bxkymvf.au1.qualtrics.com/jfe/preview/previewId/12cb98cf-1505-4666-a335-9efd633e1b2b/SV_7R7AbLlr1DmRRt4?Q_CHL=preview&Q_SurveyVersionID=current"
+            target="_blank"
+            rel="noreferrer"
+          >
+            click here
+          </a>.
+        </p>
       </div>
     );
   }
+  
   return (
     <div style={{ position: 'relative' }}>
       {phase === 'fixation' && (
