@@ -48,7 +48,7 @@ function KnockScene({
     // Determine correctness: on Go trials, a press is correct; on No-Go trials, a non-press is correct.
     const wasCorrect = (!isKnockCorrect && !didPress) || (isKnockCorrect && didPress);
     // Send both reaction time and correctness back to the parent.
-    console.log('isKnockCorrect:', isKnockCorrect, 'didPress:', didPress, 'reactionTime:', reactionTime, 'wasCorrect:', wasCorrect);
+    // console.log('isKnockCorrect:', isKnockCorrect, 'didPress:', didPress, 'reactionTime:', reactionTime, 'wasCorrect:', wasCorrect);
     onComplete({ userKnocked: didPress, isCorrect: wasCorrect, reactionTime });
   }
 
