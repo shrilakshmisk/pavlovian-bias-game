@@ -113,7 +113,7 @@ function KnockGame({ userId }) {
     const newScore = oldScore + scoreChange;
     setScore(newScore);
 
-    setFeedbackMessage(isCorrect ? `Correct! ${scoreChange}` : `Incorrect! ${scoreChange}`);
+    setFeedbackMessage(isCorrect ? `Points: ${scoreChange}` : `Points: ${scoreChange}`);
     setScoreTransition(`${oldScore} → ${newScore}`);
 
     const trialTypeMap = {

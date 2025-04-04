@@ -62,15 +62,15 @@
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(45deg, #ff6600, #ffcc00);
-  color: white;
+  background: linear-gradient(45deg, #9f9d9d, #f2f2f0);
+  color: rgb(23, 22, 22);
   font-weight: bold;
   transition: all 0.3s ease-in-out;
   position: relative;
 }
 
 .submit-button:hover {
-  background: linear-gradient(45deg, #ffcc00, #ff6600);
+  background: linear-gradient(45deg, #e3e2db, #e8e5e3);
   transform: scale(1.1);
 }
 

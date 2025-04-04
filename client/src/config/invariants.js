@@ -1,9 +1,9 @@
 // invariants.js
 
 // Durations (in milliseconds)
-export const FIXATION_DURATION = 500; // Change this value to modify the fixation time
+export const FIXATION_DURATION = 750; // Change this value to modify the fixation time
 export const FEEDBACK_DURATION = 1000;   // Feedback popup duration
-export const STIMULUS_DURATION = 3000;   // (Used in KnockScene for stimulus timing, if needed)
+export const STIMULUS_DURATION = 4000;   // (Used in KnockScene for stimulus timing, if needed)
 export const ADDITION_DURATION = 1500;        // Addition problem display duration
 
 
@@ -29,8 +29,8 @@ export const BLOCK_PROPORTIONS = {
 
 // Define the asset paths for your stimulus images (PNG files)
 export const ASSET_PATHS = {
-  goImage1: '/assets/goImage1.png',
-  goImage2: '/assets/goImage2.png',
-  nogoImage1: '/assets/noGoImage1.png',
-  nogoImage2: '/assets/noGoImage2.png',
+  goImage1: '/assets/goImage1.jpeg',
+  goImage2: '/assets/goImage2.jpeg',
+  nogoImage1: '/assets/noGoImage1.jpeg',
+  nogoImage2: '/assets/noGoImage2.jpeg',
 };
