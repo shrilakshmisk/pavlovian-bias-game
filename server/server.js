@@ -55,6 +55,49 @@ app.post('/api/trialData', (req, res) => {
     });
   });
   
+app.get('/download-db', (req, res) => {
+  res.download(dbPath, 'experiment-data.sqlite', (err) => {
+    if (err) {
+      console.error('Error downloading the DB:', err);
+      res.status(500).send('Error downloading database');
+    }
+  });
+});
+
+// endpoint to reset the db
+app.post('/reset-db', (req, res) => {
+  db.serialize(() => {
+    db.run("DROP TABLE IF EXISTS trial_data", (err) => {
+      if (err) {
+        console.error("Error dropping table:", err.message);
+        return res.status(500).json({ error: "Internal server error" });
+      }
+      const createTableQuery = `
+        CREATE TABLE IF NOT EXISTS trial_data (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          userId INTEGER,
+          trialNumber INTEGER,
+          stimulus INTEGER,
+          reactionTime INTEGER,
+          knocked BOOLEAN,
+          correct BOOLEAN,
+          scoreChange INTEGER,
+          newScore INTEGER,
+          timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+      `;
+      db.run(createTableQuery, (err) => {
+        if (err) {
+          console.error("Error creating table:", err.message);
+          return res.status(500).json({ error: "Internal server error" });
+        }
+        res.json({ success: true });
+      });
+    });
+  });
+});
+
+
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", (req, res) => {
@@ -64,14 +107,7 @@ app.get("*", (req, res) => {
 const dbPath = path.join(__dirname, './', 'db.sqlite'); // adjust path accordingly
 
 // Endpoint to download the SQLite DB
-app.get('/download-db', (req, res) => {
-  res.download(dbPath, 'experiment-data.sqlite', (err) => {
-    if (err) {
-      console.error('Error downloading the DB:', err);
-      res.status(500).send('Error downloading database');
-    }
-  });
-});
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
