@@ -1,7 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './KnockScene.css';
 import coinIcon from '../assets/coin.jpg'; // Make sure you have a coin icon here
-
+import {
+  FIXATION_DURATION,
+  FEEDBACK_DURATION,
+  TOTAL_TRIALS_PER_BLOCK,
+  BLOCK_ORDER,
+  STIMULUS_DURATION,
+  BLOCK_PROPORTIONS,
+  ASSET_PATHS
+} from '../config/invariants';
 function KnockScene({
   userId,
   backgroundImage,
@@ -9,7 +17,7 @@ function KnockScene({
   score,
   onComplete       // callback to send result data to parent
 }) {
-  const [timeLeft, setTimeLeft] = useState(3000); // 3 seconds in ms
+  const [timeLeft, setTimeLeft] = useState(STIMULUS_DURATION); // 3 seconds in ms
   const [pressed, setPressed] = useState(false);
   const intervalRef = useRef(null);
 
@@ -18,7 +26,7 @@ function KnockScene({
     const startTime = Date.now();
     intervalRef.current = setInterval(() => {
       const elapsed = Date.now() - startTime;
-      const remaining = 3000 - elapsed;
+      const remaining = STIMULUS_DURATION - elapsed;
       setTimeLeft(remaining > 0 ? remaining : 0);
       if (remaining <= 0) {
         clearInterval(intervalRef.current);
@@ -44,7 +52,7 @@ function KnockScene({
   // Called when time runs out or when a key is pressed
   function finishScene(didPress) {
     // Calculate reaction time only if pressed; else keep it 0
-    const reactionTime = didPress ? (3000 - timeLeft) : 0;
+    const reactionTime = didPress ? (STIMULUS_DURATION - timeLeft) : 0;
     // Determine correctness: on Go trials, a press is correct; on No-Go trials, a non-press is correct.
     const wasCorrect = (!isKnockCorrect && !didPress) || (isKnockCorrect && didPress);
     // Send both reaction time and correctness back to the parent.
