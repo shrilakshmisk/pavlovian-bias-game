@@ -36,8 +36,8 @@ const Instructions = ({ onClose }) => {
       }}>
         <h2>Game Instructions</h2>
         <p>
-          You’re about to embark on a mission where you’ll interact with mysterious alien ships appearing in Earth’s orbit.  
-          Each ship will be either <b style={{ color: "red" }}>red</b> or <b style={{ color: "green" }}>green</b>, and your task is to decide whether to knock on it or not.
+          You’re about to embark on a mission where you’ll interact with mysterious alien ships appearing in Earth’s orbit. There are 4 types of alien ships. They differ in how they look. 
+          Each ship will be either <b style={{ color: "red" }}>red</b> or <b style={{ color: "green" }}>green</b>, and your task is to decide whether to knock on it or not. Pay attention to other features too.
         </p>
         <p><b>Press the space bar</b> to knock. Doing nothing means you choose not to knock.</p>
         <p>
@@ -46,7 +46,7 @@ const Instructions = ({ onClose }) => {
         </p>
         <p>
           To begin, you will first complete a short <b>practice trial</b> to get familiar with how the game works.  
-          For the practice, please enter <b>123</b> as your username and continue.
+          For the practice, please enter your roll number as your username and continue.
         </p>
         <p>
           In the final experiment, make sure to enter your <b>roll number</b> as your username.

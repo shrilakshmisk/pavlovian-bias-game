@@ -8,7 +8,7 @@ export const STIMULUS_DURATION = 4000;   // (Used in KnockScene for stimulus tim
 export const ADDITION_DURATION = 1500;        // Addition problem display duration
 
 // branch trial
-// export const FIXATION_DURATION = 1000; // Change this value to modify the fixation time
+// export const FIXATION_DURATION = 1500; // Change this value to modify the fixation time
 // export const FEEDBACK_DURATION = 2000;   // Feedback popup duration
 // export const STIMULUS_DURATION = 5000;   // (Used in KnockScene for stimulus timing, if needed)
 // export const ADDITION_DURATION = 1500;        // Addition problem display duration

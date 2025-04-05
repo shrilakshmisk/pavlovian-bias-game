@@ -162,7 +162,7 @@ function KnockGame({ userId }) {
 
   useEffect(() => {
     if (experimentEnded) {
-      const surveyUrl = `https://qualtricsxmz5bxkymvf.au1.qualtrics.com/jfe/preview/previewId/12cb98cf-1505-4666-a335-9efd633e1b2b/SV_7R7AbLlr1DmRRt4?Q_CHL=preview&Q_SurveyVersionID=current`;
+      const surveyUrl = `https://qualtricsxmz5bxkymvf.qualtrics.com/jfe/form/SV_7R7AbLlr1DmRRt4`;
 
       const timer = setTimeout(() => {
         window.open(surveyUrl, "_blank");
@@ -181,7 +181,7 @@ function KnockGame({ userId }) {
         <p>
           If it doesn’t open,{' '}
           <a
-            href="https://qualtricsxmz5bxkymvf.au1.qualtrics.com/jfe/preview/previewId/12cb98cf-1505-4666-a335-9efd633e1b2b/SV_7R7AbLlr1DmRRt4?Q_CHL=preview&Q_SurveyVersionID=current"
+            href="https://qualtricsxmz5bxkymvf.qualtrics.com/jfe/form/SV_7R7AbLlr1DmRRt4"
             target="_blank"
             rel="noreferrer"
           >

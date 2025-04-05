@@ -38,6 +38,8 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
   }
 });
 
+const dbPath = path.join(__dirname, './', 'db.sqlite'); // adjust path accordingly
+
 app.post('/api/trialData', (req, res) => {
     const trialData = req.body; // Expected fields: userId, trialNumber, stimulus, reactionTime, correct, scoreChange, newScore
     const { userId, trialNumber, stimulus, reactionTime, knocked, correct, scoreChange, newScore } = trialData;
@@ -104,7 +106,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
-const dbPath = path.join(__dirname, './', 'db.sqlite'); // adjust path accordingly
 
 // Endpoint to download the SQLite DB
 
