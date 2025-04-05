@@ -26,20 +26,20 @@ export const BLOCK_ORDER_STRESS = ['LCS', 'HCS']; // two blocks
 
 
 // branch go-incongruent
-export const BLOCK_PROPORTIONS = {
-  MC: { go1: 25, go2: 25, nogo1: 25, nogo2: 25 },   // 25% each
-  LC: { go1: 35, go2: 15, nogo1: 35, nogo2: 15 },   // 35%, 15%, 35%, 15%
-  HC1: { go1: 15, go2: 35, nogo1: 15, nogo2: 35 },    // 15%, 35%, 15%, 35%
-  HC2: {go1: 15, go2: 50, nogo1: 15 , nogo2: 20}
-};
-
-// branch nogo-incongruent
 // export const BLOCK_PROPORTIONS = {
 //   MC: { go1: 25, go2: 25, nogo1: 25, nogo2: 25 },   // 25% each
 //   LC: { go1: 35, go2: 15, nogo1: 35, nogo2: 15 },   // 35%, 15%, 35%, 15%
 //   HC1: { go1: 15, go2: 35, nogo1: 15, nogo2: 35 },    // 15%, 35%, 15%, 35%
-//   HC2: {go1: 15, go2: 20, nogo1: 15 , nogo2: 50}
+//   HC2: {go1: 15, go2: 50, nogo1: 15 , nogo2: 20}
 // };
+
+// branch nogo-incongruent
+export const BLOCK_PROPORTIONS = {
+  MC: { go1: 25, go2: 25, nogo1: 25, nogo2: 25 },   // 25% each
+  LC: { go1: 35, go2: 15, nogo1: 35, nogo2: 15 },   // 35%, 15%, 35%, 15%
+  HC1: { go1: 15, go2: 35, nogo1: 15, nogo2: 35 },    // 15%, 35%, 15%, 35%
+  HC2: {go1: 15, go2: 20, nogo1: 15 , nogo2: 50}
+};
 
 // branch trial
 // export const BLOCK_PROPORTIONS = {
