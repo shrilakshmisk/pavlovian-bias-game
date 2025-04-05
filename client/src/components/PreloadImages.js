@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ASSET_PATHS } from './config/invariants';
+import { ASSET_PATHS } from '../config/invariants';
 
 const PreloadImages = () => {
   useEffect(() => {
