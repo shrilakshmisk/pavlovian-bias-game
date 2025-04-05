@@ -3,6 +3,7 @@ import Instructions from './components/Instructions';
 import UserEntryScreen from './components/UserEntryScreen';
 import StartScene from './components/StartScene';
 import KnockGame from './components/KnockGame';
+import PreloadImages from './PreloadImages';
 
 function App() {
   const [currentScene, setCurrentScene] = useState('instructions'); // Start with instructions
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <div>
+      <PreloadImages />
       {currentScene === 'instructions' && <Instructions onClose={handleInstructionsClose} />}
       {currentScene === 'userEntry' && <UserEntryScreen onSubmit={handleUserSubmit} />}
       {currentScene === 'start' && <StartScene onStart={handleStart} />}
