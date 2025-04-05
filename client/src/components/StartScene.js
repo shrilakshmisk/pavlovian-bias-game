@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './StartScene.css';
-import coinIcon from '../assets/coin.jpg'; // Make sure you have a coin icon here
 
 function StartScene({ score = 0, onStart }) {
   useEffect(() => {
