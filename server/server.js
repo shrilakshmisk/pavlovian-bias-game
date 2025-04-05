@@ -99,6 +99,18 @@ app.post('/reset-db', (req, res) => {
   });
 });
 
+app.use(
+  '/assets',
+  express.static(path.join(__dirname, "../client/build/assets"), {
+    maxAge: '31536000', // Cache for one year (in milliseconds)
+    setHeaders: (res, filePath) => {
+      // For image files, add the 'immutable' directive
+      if (/\.(jpg|jpeg|png)$/i.test(filePath)) {
+        res.set('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    }
+  })
+);
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 
