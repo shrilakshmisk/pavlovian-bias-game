@@ -162,7 +162,7 @@ function KnockGame({ userId }) {
 
   useEffect(() => {
     if (experimentEnded) {
-      const surveyUrl = `https://qualtricsxmz5bxkymvf.qualtrics.com/jfe/form/SV_7R7AbLlr1DmRRt4`;
+      const surveyUrl = `https://www.google.com/`;
 
       const timer = setTimeout(() => {
         window.open(surveyUrl, "_blank");
@@ -175,19 +175,8 @@ function KnockGame({ userId }) {
   if (experimentEnded) {
     return (
       <div style={{ textAlign: 'center', paddingTop: '5rem' }}>
-        <h2>Thank you for participating!</h2>
-        <p>Your final score: <strong>{score}</strong></p>
-        <p>You will be redirected to a short survey in <strong>5 seconds</strong>...</p>
-        <p>
-          If it doesn’t open,{' '}
-          <a
-            href="https://qualtricsxmz5bxkymvf.qualtrics.com/jfe/form/SV_7R7AbLlr1DmRRt4"
-            target="_blank"
-            rel="noreferrer"
-          >
-            click here
-          </a>.
-        </p>
+        <h2>Trial Game has ended!</h2>
+        <p>Your trial score: <strong>{score}</strong></p>
       </div>
     );
   }
