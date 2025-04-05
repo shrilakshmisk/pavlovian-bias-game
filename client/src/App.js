@@ -3,7 +3,7 @@ import Instructions from './components/Instructions';
 import UserEntryScreen from './components/UserEntryScreen';
 import StartScene from './components/StartScene';
 import KnockGame from './components/KnockGame';
-import PreloadImages from './PreloadImages';
+import PreloadImages from './components/PreloadImages';
 
 function App() {
   const [currentScene, setCurrentScene] = useState('instructions'); // Start with instructions
