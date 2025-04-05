@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './KnockScene.css';
-import coinIcon from '../assets/coin.jpg'; // Make sure you have a coin icon here
 import {
   FIXATION_DURATION,
   FEEDBACK_DURATION,
