@@ -41,17 +41,20 @@ const Instructions = ({ onClose }) => {
         </p>
         <p><b>Press the space bar</b> to knock. Doing nothing means you choose not to knock.</p>
         <p>
+          Each alien ship will be displayed for <b>5 seconds</b>. During this time, you must decide whether to knock or not.
+          <b>You must press the space bar before the 5 seconds are over</b>. If you choose not to knock, simply wait and do nothing until the timer runs out.
+          A countdown timer will be visible at the <b>top-left corner</b> of the screen to help you keep track.
+        </p>
+        <p>
           The aliens don’t always reward the same actions! Knocking may earn you points, but sometimes, staying back might be the smarter move.
           Your goal is to collect as many rewards as possible.
         </p>
         <p>
-          To begin, you will first complete a short <b>practice trial</b> to get familiar with how the game works.  
-          For the practice, please enter your roll number as your username and continue.
+          Enter your <b>roll number</b> as your username.
         </p>
         <p>
-          In the final experiment, make sure to enter your <b>roll number</b> as your username.
+          Please <b>open the game link only once</b>. Reloading or opening it multiple times may disrupt your progress and data.
         </p>
-        <p>The entire game spans approximately <b>30 minutes</b>, so make sure you’re comfortable and free from distractions before starting.</p>
         <p><b>Press the space bar or click "Got it!" to continue 🚀</b></p>
         <button 
           onClick={onClose} 
