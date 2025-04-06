@@ -178,6 +178,7 @@ function KnockGame({ userId }) {
         <h2>Trial Game has ended!</h2>
         <p>Your trial score: <strong>{score}</strong></p>
         <p> If you'd like to try the practice round again, refresh the tab, re-enter your roll number as username, and play. </p>
+    </div>
     );
   }
   
