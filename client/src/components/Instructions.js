@@ -41,13 +41,16 @@ const Instructions = ({ onClose }) => {
         </p>
         <p><b>Press the space bar</b> to knock. Doing nothing means you choose not to knock.</p>
         <p>
-          Each alien ship will be displayed for <b>4 seconds</b>. During this time, you must decide whether to knock or not.
-          <b>You must press the space bar before the 4 seconds are over</b>. If you choose not to knock, simply wait and do nothing until the timer runs out.
+          Each alien ship will be displayed for <b>3 seconds</b>. During this time, you must decide whether to knock or not.
+          <b>You must press the space bar before the 3 seconds are over</b>. If you choose not to knock, simply wait and do nothing until the timer runs out.
           A countdown timer will be visible at the <b>top-left corner</b> of the screen to help you keep track.
         </p>
         <p>
           The aliens don’t always reward the same actions! Knocking may earn you points, but sometimes, staying back might be the smarter move.
           Your goal is to collect as many rewards as possible.
+        </p>
+        <p>
+          There will be 3 breaks of 3 minutes in between the game spread evenly. However you can resume by pressing enter button if you dont want to wait for 3 minutes.
         </p>
         <p>
           Enter your <b>roll number</b> as your username.
