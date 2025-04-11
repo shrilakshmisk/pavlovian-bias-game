@@ -1,0 +1,62 @@
+/* Container: Full screen break view */
+.break-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #eef1f5; /* Light and calm background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Countdown Timer Box */
+  .break-timer {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.9));
+    border: 2px solid rgba(200, 200, 200, 0.6);
+    border-radius: 12px;
+    color: #333;
+    text-transform: uppercase;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  /* Instruction Text */
+  .break-instruction {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    font-style: italic;
+  }
+  
+  /* Resume Button (the style mirrors the KnockScene theme) */
+  .resume-button {
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #007bff; /* Use the primary theme color from KnockScene */
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    pointer-events: none; /* Disable mouse interactions */
+  }
+  
+  /* Override the default disabled styles to keep the button vibrant */
+  .resume-button:disabled {
+    background-color: #007bff; 
+    color: #fff;
+    opacity: 1;
+    cursor: pointer;
+  }
+  

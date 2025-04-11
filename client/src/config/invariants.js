@@ -2,9 +2,9 @@
 
 // Durations (in milliseconds)
 // branch go-incongruent and nogo-incongruent
-export const FIXATION_DURATION = 1000; // Change this value to modify the fixation time
+export const FIXATION_DURATION = 750; // Change this value to modify the fixation time
 export const FEEDBACK_DURATION = 1000;   // Feedback popup duration
-export const STIMULUS_DURATION = 4000;   // (Used in KnockScene for stimulus timing, if needed)
+export const STIMULUS_DURATION = 3000;   // (Used in KnockScene for stimulus timing, if needed)
 export const ADDITION_DURATION = 1500;        // Addition problem display duration
 
 // branch trial
@@ -15,7 +15,7 @@ export const ADDITION_DURATION = 1500;        // Addition problem display durati
 // Trial block settings
 
 // branch go-incongruent and nogo-incongruent
-export const TOTAL_TRIALS_PER_BLOCK = 100;
+export const TOTAL_TRIALS_PER_BLOCK = 80;
 
 // branch trial
 // export const TOTAL_TRIALS_PER_BLOCK = 4;
@@ -27,10 +27,10 @@ export const BLOCK_ORDER_STRESS = ['LCS', 'HCS']; // two blocks
 
 // branch go-incongruent
 export const BLOCK_PROPORTIONS = {
-  MC: { go1: 25, go2: 25, nogo1: 25, nogo2: 25 },   // 25% each
-  LC: { go1: 35, go2: 15, nogo1: 35, nogo2: 15 },   // 35%, 15%, 35%, 15%
-  HC1: { go1: 15, go2: 35, nogo1: 15, nogo2: 35 },    // 15%, 35%, 15%, 35%
-  HC2: {go1: 15, go2: 50, nogo1: 15 , nogo2: 20}
+  MC: { go1: 20, go2: 20, nogo1: 20, nogo2: 20 },   // 25% each
+  LC: { go1: 28, go2: 12, nogo1: 28, nogo2: 12 },   // 1%, 1%, 1%, 1%
+  HC1: { go1: 12, go2: 28, nogo1: 12, nogo2: 28 },    // 1%, 3%, 1%, 3%
+  HC2: {go1: 12, go2: 16, nogo1: 12 , nogo2: 40}
 };
 
 // branch nogo-incongruent

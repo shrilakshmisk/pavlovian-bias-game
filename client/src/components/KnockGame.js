@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import KnockScene from './KnockScene';
 import FeedbackPopup from './FeedbackPopup';
 import FixationScreen from './FixationScreen';
 import EndScreen from './EndScreen';
+import BreakScreen from './BreakScreen'; // Import the new break screen
 import {
   FIXATION_DURATION,
   FEEDBACK_DURATION,
@@ -35,6 +35,7 @@ function generateBlock(conflictType) {
     }
   });
 
+  // Shuffle the block using Fisher-Yates shuffle algorithm.
   for (let i = block.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [block[i], block[j]] = [block[j], block[i]];
@@ -54,7 +55,7 @@ function KnockGame({ userId }) {
   const [trialList] = useState(() => generateTrialList());
   const totalTrials = trialList.length;
   const [currentTrialIndex, setCurrentTrialIndex] = useState(0);
-  const [phase, setPhase] = useState('fixation');
+  const [phase, setPhase] = useState('fixation'); // possible phases: fixation, stimulus, feedback, break
   const [trialKey, setTrialKey] = useState(1);
   const [score, setScore] = useState(0);
   const [feedbackMessage, setFeedbackMessage] = useState('');
@@ -68,7 +69,7 @@ function KnockGame({ userId }) {
     setTrialKey(prev => prev + 1);
   };
 
-    const handleKnockComplete = ({ userKnocked, isCorrect, reactionTime }) => {
+  const handleKnockComplete = ({ userKnocked, isCorrect, reactionTime }) => {
     const trialType = currentTrial.type;
     let wasCorrect = false;
     let scoreChange = 0;
@@ -95,7 +96,7 @@ function KnockGame({ userId }) {
         scoreChange = wasCorrect ? -50 : 0;
       } else {
         wasCorrect = Math.random() < 0.8;
-        scoreChange = wasCorrect ? 0 : 50;
+        scoreChange = wasCorrect ? 0 : +50;
       }
     } else if (trialType === 'nogo2') {
       if (userKnocked) {
@@ -113,7 +114,7 @@ function KnockGame({ userId }) {
     const newScore = oldScore + scoreChange;
     setScore(newScore);
 
-    setFeedbackMessage(isCorrect ? `Points: ${scoreChange}` : `Points: ${scoreChange}`);
+    setFeedbackMessage(`Points: ${scoreChange}`);
     setScoreTransition(`${oldScore} → ${newScore}`);
 
     const trialTypeMap = {
@@ -139,8 +140,12 @@ function KnockGame({ userId }) {
 
     setPhase('feedback');
 
+    // After showing feedback, determine whether to trigger a break or continue.
     setTimeout(() => {
-      if (currentTrialIndex < totalTrials - 1) {
+      // Check if we've just finished a block (but not the entire experiment)
+      if (((currentTrialIndex + 1) % TOTAL_TRIALS_PER_BLOCK === 0) && (currentTrialIndex < totalTrials - 1)) {
+        setPhase('break');
+      } else if (currentTrialIndex < totalTrials - 1) {
         setCurrentTrialIndex(prev => prev + 1);
         setPhase('fixation');
       } else {
@@ -160,14 +165,19 @@ function KnockGame({ userId }) {
       .catch(err => console.error('Error saving trial data:', err));
   }
 
+  // Callback invoked after the break ends.
+  const handleBreakResume = () => {
+    // Move to the next trial after the break.
+    setCurrentTrialIndex(prev => prev + 1);
+    setPhase('fixation');
+  };
+
   useEffect(() => {
     if (experimentEnded) {
       const surveyUrl = `https://qualtricsxmz5bxkymvf.qualtrics.com/jfe/form/SV_7R7AbLlr1DmRRt4`;
-
       const timer = setTimeout(() => {
         window.open(surveyUrl, "_blank");
       }, 5000);
-
       return () => clearTimeout(timer);
     }
   }, [experimentEnded]);
@@ -212,6 +222,9 @@ function KnockGame({ userId }) {
           message={feedbackMessage}
           scoreTransition={scoreTransition}
         />
+      )}
+      {phase === 'break' && (
+        <BreakScreen duration={180} onResume={handleBreakResume} />
       )}
     </div>
   );
